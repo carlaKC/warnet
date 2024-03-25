@@ -55,7 +55,7 @@ def import_json(infile: Path, outfile: Path):
     for index, n in enumerate(graph.nodes()):
         graph.nodes[n]["bitcoin_config"] = f"-uacomment=tank{index:06}"
         graph.nodes[n]["ln"] = "lnd"
-        graph.nodes[n]["ln_cb_image"] = "pinheadmz/circuitbreaker:278737d"
+        graph.nodes[n]["ln_cb_image"] = "carlakirkcohen/circuitbreaker:endorsement-experiment"
         graph.nodes[n]["ln_config"] = "--protocol.wumbo-channels"
 
     # Save a map of LN pubkey -> Tank index
