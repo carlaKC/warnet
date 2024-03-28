@@ -91,6 +91,7 @@ class Tank:
                 "impl": node["ln"],
                 "ln_image": node.get("ln_image", "carlakirkcohen/lnd:experimentalendorsement"),
                 "cb_image": node.get("ln_cb_image", None),
+                "cb_data": node.get("ln_cb_data", None),
                 "ln_config": node.get("ln_config", "")
             }
             self.lnnode = LNNode(self.warnet, self, self.warnet.container_interface, options)

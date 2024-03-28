@@ -54,6 +54,7 @@ lightning network channel (see [lightning.md](lightning.md)).
   <key id="ln"              attr.name="ln"               attr.type="string"   for="node" />
   <key id="ln_image"        attr.name="ln_image"         attr.type="string"   for="node" />
   <key id="ln_cb_image"     attr.name="ln_cb_image"      attr.type="string"   for="node" />
+  <key id="ln_cb_data"      attr.name="ln_cb_data"       attr.type="string"   for="node" />
   <key id="ln_config"       attr.name="ln_config"        attr.type="string"   for="node" />
   <key id="channel_open"    attr.name="channel_open"     attr.type="string"   for="edge" />
   <key id="source_policy"   attr.name="source_policy"    attr.type="string"   for="edge" />
@@ -77,6 +78,7 @@ lightning network channel (see [lightning.md](lightning.md)).
 | ln             | node  | string  |           | Attach a lightning network node of this implementation (currently only supports 'lnd')                                                                              |
 | ln_image       | node  | string  |           | Specify a lightning network node image from Dockerhub with the format repository/image:tag                                                                          |
 | ln_cb_image    | node  | string  |           | Specify a lnd Circuit Breaker image from Dockerhub with the format repository/image:tag                                                                             |
+| ln_cb_data     | node  | string  |           | Specify the absolute path to a csv file that can be used to bootstrap Circuit Breaker's historical data, eg: /Users/you/forwards.csv                                |
 | ln_config      | node  | string  |           | A string of arguments for the lightning network node in command-line format, e.g. '--protocol.wumbo-channels --bitcoin.timelockdelta=80'                            |
 | channel_open   | edge  | string  |           | Indicate that this edge is a lightning channel with these arguments passed to lnd openchannel                                                                       |
 | source_policy  | edge  | string  |           | Update the channel originator policy by passing these arguments passed to lnd updatechanpolicy                                                                      |

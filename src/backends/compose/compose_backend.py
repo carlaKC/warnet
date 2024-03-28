@@ -1,3 +1,4 @@
+import os
 import logging
 import re
 import shutil
@@ -40,6 +41,7 @@ CONTAINER_PREFIX_BITCOIND = "tank-bitcoin"
 CONTAINER_PREFIX_LN = "tank-ln"
 CONTAINER_PREFIX_CIRCUITBREAKER = "tank-ln-cb"
 LND_MOUNT_PATH = "/root/.lnd"
+CB_DATA_MOUNT_PATH = "/root/data"
 
 logger = logging.getLogger("docker-interface")
 logging.getLogger("docker.utils.config").setLevel(logging.WARNING)
@@ -467,6 +469,25 @@ class ComposeBackend(BackendInterface):
                 "restart": "on-failure",
             }
             compose["volumes"].update({f"{ln_container_name}-data": None})
+
+            if tank.lnnode.cb_data is not None: 
+                cb_data_volume_name = f"{ln_cb_container_name}-data"
+
+                # Add an additional volume to the circuitbreaker container that has the historical data in it.
+                services[ln_cb_container_name]["volumes"].append(f"{cb_data_volume_name}:{CB_DATA_MOUNT_PATH}")
+                
+                # Add the volume to the docker compose, binding to the path provided and the file to our command.
+                data_mount, data_file = os.path.split(tank.lnnode.cb_data)
+                compose["volumes"].update({
+                    f"{cb_data_volume_name}": {
+                        "driver": "local",
+                        "driver_opts": {
+                        "type": "none",
+                        "o": "bind",
+                        "device": f"{data_mount}"
+                        }}})
+
+                services[ln_cb_container_name]["command"] = services[ln_cb_container_name]["command"] + f" --loadhist={CB_DATA_MOUNT_PATH}/{data_file}"
 
     def get_ipv4_address(self, container: Container) -> str:
         """

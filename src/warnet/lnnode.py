@@ -24,6 +24,7 @@ class LNNode:
         self.impl = options["impl"]
         self.image = options["ln_image"]
         self.cb = options["cb_image"]
+        self.cb_data = options["cb_data"]
         self.ln_config = options["ln_config"]
         self.ipv4 = generate_ipv4_addr(self.warnet.subnet)
         self.rpc_port = 10009

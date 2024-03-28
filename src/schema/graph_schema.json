@@ -36,6 +36,9 @@
       "ln_cb_image": {
         "type": "string",
         "comment": "Specify a lnd Circuit Breaker image from Dockerhub with the format repository/image:tag"},
+	   "ln_cb_data": {
+        "type": "string",
+        "comment": "Specify a directory containing htlc_forwards.csv to bootstrap circuitbreaker with historical data, e.g. /User/self/data"},
       "ln_config": {
         "type": "string",
         "comment": "A string of arguments for the lightning network node in command-line format, e.g. '--protocol.wumbo-channels --bitcoin.timelockdelta=80'"}
