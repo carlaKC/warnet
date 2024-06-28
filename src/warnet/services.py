@@ -30,7 +30,7 @@ services = {
     "simln": {
         "image": "bitcoindevproject/simln:0.2.0",
         "container_name_suffix": "simln",
-        "environment": ["LOG_LEVEL=debug", "SIMFILE_PATH=/simln/sim.json"],
+        "environment": ["LOG_LEVEL=debug", "SIMFILE_PATH=/simln/sim.json", "FIX_SEED=509064695903432291"],
         "config_files": ["simln/:/simln"],
     },
 }
