@@ -28,7 +28,7 @@ services = {
     #     "config_files": [f"{AO_CONF_NAME}:/app/config.toml"],
     # },
     "simln": {
-        "image": "bitcoindevproject/simln:0.2.2",
+        "image": "bitcoindevproject/simln:0.2.3",
         "container_name_suffix": "simln",
         "environment": ["LOG_LEVEL=debug", "SIMFILE_PATH=/simln/sim.json", "FIX_SEED=509064695903432291"],
         "config_files": ["simln/:/simln"],
