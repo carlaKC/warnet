@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: warnet-rpc
-        imagePullPolicy: Never
-        image: warnet/dev
+        imagePullPolicy: Always
+        image: carlakirkcohen/warnet-rpc:attackathon
         ports:
         - containerPort: 9276
         volumeMounts:
